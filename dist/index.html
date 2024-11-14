@@ -58,7 +58,7 @@
     <div id="product-list" class="product-list container"></div>
 
     <script id="template-menu-product" type="text/x-handlebars-template">
-      <article class="product active"> <!-- product -->
+      <article class="product"> <!-- product -->
 
           <header class="product__header">
             <h3 class="product__name no-spacing">{{ name }} <i class="fas fa-chevron-down product__icon"></i></h3>
@@ -79,7 +79,7 @@
                     <label>
                       <input type="checkbox" name="{{ paramId }}" value="{{ @key }}" id="{{ @key }}" {{#if default}}checked{{/if}}>
                       <span class="checkbox__checkmark"></span>
-                      {{{ label }}} (${{{ price }}})
+                      {{{label }}} (${{{ price }}})
                     </label>
                   </div>
                   {{/each}}
