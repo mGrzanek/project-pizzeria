@@ -42,6 +42,8 @@ const select = {
 
   const settings = {
     amountWidget: {
+      decreaseValue: 1,
+      increaseValue: 1,
       defaultValue: 1,
       defaultMin: 0,
       defaultMax: 10,
@@ -178,7 +180,7 @@ const select = {
       const thisWidget = this;
       
       thisWidget.getElements(element);
-      thisWidget.setValue(thisWidget.input.value);
+      thisWidget.setValue(thisWidget.input.value || settings.amountWidget.defaultValue);
       thisWidget.initActions();
       
       console.log('thisWidget: ', thisWidget);
@@ -203,12 +205,12 @@ const select = {
 
       thisWidget.linkDecrease.addEventListener('click', function(event) {
         event.preventDefault();
-        thisWidget.setValue(parseInt(thisWidget.input.value) - parseInt(settings.amountWidget.defaultValue));
+        thisWidget.setValue(parseInt(thisWidget.input.value) - parseInt(settings.amountWidget.decreaseValue));
       });
 
       thisWidget.linkIncrease.addEventListener('click', function(event) {
         event.preventDefault();
-        thisWidget.setValue(parseInt(thisWidget.input.value) + parseInt(settings.amountWidget.defaultValue));
+        thisWidget.setValue(parseInt(thisWidget.input.value) + parseInt(settings.amountWidget.increaseValue));
       });
     }
 
