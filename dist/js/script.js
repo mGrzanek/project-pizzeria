@@ -61,9 +61,8 @@ const select = {
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
+      thisProduct.initAmountWidget();
       thisProduct.processOrder();
-
-      console.log('new Product: ', thisProduct);
     }
     renderInMenu(){
       const thisProduct = this;
@@ -72,7 +71,6 @@ const select = {
       const generatedHTML = templates.menuProduct(thisProduct.data);
       /* create element using utils.createElementFromHTML */
       thisProduct.element = utils.createDOMFromHTML(generatedHTML);
-      console.log('element:', thisProduct.element);
       /* find menu container */
       thisProduct.menuContainer = document.querySelector(select.containerOf.menu);
       /* add element to menu */
@@ -88,6 +86,7 @@ const select = {
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
     }
 
     initAccordion() {
@@ -98,9 +97,7 @@ const select = {
         /* prevent default action for event */
         event.preventDefault();
         /* find active product (product that has active class) */
-        console.log('menuContainer: ', thisProduct.menuContainer);
         const productActive = thisProduct.menuContainer.querySelector(select.all.menuProductsActive);
-        console.log('productActive: ', productActive);
         /* if there is active product and it's not thisProduct.element, remove class active from it */
         if(productActive && productActive != thisProduct.element){
           productActive.classList.remove(classNames.menuProduct.wrapperActive);
@@ -108,6 +105,12 @@ const select = {
         /* toggle active class on thisProduct.element */
           thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
       });
+    }
+
+    initAmountWidget() {
+      const thisProduct = this;
+
+      thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
     }
 
     initOrderForm() {
@@ -123,7 +126,7 @@ const select = {
           thisProduct.processOrder();
         });
       }
-      
+
       thisProduct.cartButton.addEventListener('click', function(event){
         event.preventDefault();
         thisProduct.processOrder();
@@ -134,23 +137,18 @@ const select = {
       const thisProduct = this;
 
       const formData = utils.serializeFormToObject(thisProduct.form);
-      console.log('formData: ', formData);
       // set price to default price
       let price = thisProduct.data.price;
-
       // for every category (param)...
       for(let paramId in thisProduct.data.params) {
         // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
         const param = thisProduct.data.params[paramId];
-        console.log(paramId, param);
-
         // for every option in this category
         for(let optionId in param.options) {
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
-          console.log('optionId, option ', optionId, option);
           const productImage = thisProduct.imageWrapper.querySelector(`.${paramId}-${optionId}`);
-          const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].includes(optionId);
+          const optionSelected = paramId in formData && formData[paramId].includes(optionId);
           if(productImage){
             if(optionSelected) {
               productImage.classList.add(classNames.menuProduct.imageVisible);
@@ -171,10 +169,40 @@ const select = {
     }
   }
 
+  class AmountWidget {
+    constructor(element) {
+      const thisWidget = this;
+      
+      thisWidget.getElements(element);
+      
+      console.log('thisWidget: ', thisWidget);
+      console.log('constructor element: ', element);
+    }
+
+    getElements(element){
+      const thisWidget = this;
+
+      thisWidget.element = element;
+      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
+    }
+
+    setValue(value){
+      const thisWidget = this;
+
+      thisWidget.newValue = parseInt(value);
+
+      /* TO DO: Add validation  */
+
+      thisWidget.value = thisWidget.newValue;
+      thisWidget.input.value = thisWidget.value;
+    }
+  }
+
   const app = {
     initMenu:  function() {
       const thisApp = this;
-      console.log('thisApp.data: ', thisApp.data);
 
       for(let productData in thisApp.data.products){
         new Product(productData, thisApp.data.products[productData]);
@@ -186,12 +214,7 @@ const select = {
     },
     init: function(){
       const thisApp = this;
-      console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates);
-      
+
       thisApp.initData();
       thisApp.initMenu();
     },
