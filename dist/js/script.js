@@ -353,8 +353,8 @@ const select = {
       thisCart.dom.productList.appendChild(generatedDOM);
       //thisCart.dom.productList.insertAdjacentHTML('beforeend', generatedDOM);
 
-      thisCart.cartProduct = new CartProduct(menuProduct, generatedDOM);
-      console.log(thisCart.cartProduct);
+      thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
+      console.log(thisCart.products);
 
     }
   }
