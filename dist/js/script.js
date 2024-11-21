@@ -349,11 +349,39 @@ const select = {
       const thisCart = this;
 
       const generatedHTML = templates.cartProduct(menuProduct);
-      thisCart.dom.productList.insertAdjacentHTML('beforeend', generatedHTML);
-      // const generatedDOM = utils.createDOMFromHTML(generatedHTML);
-      // thisCart.dom.productList.appendChild(generatedDOM)
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
+      thisCart.dom.productList.appendChild(generatedDOM);
+      //thisCart.dom.productList.insertAdjacentHTML('beforeend', generatedDOM);
 
-      console.log('adding product: ', menuProduct);
+      thisCart.cartProduct = new CartProduct(menuProduct, generatedDOM);
+      console.log(thisCart.cartProduct);
+
+    }
+  }
+
+  class CartProduct {
+    constructor(menuProduct, element){
+      const thisCartProduct = this;
+
+      thisCartProduct.id = menuProduct.id;
+      thisCartProduct.name = menuProduct.name;
+      thisCartProduct.params = menuProduct.params;
+      thisCartProduct.singlePrice = menuProduct.singlePrice;
+      thisCartProduct.price = menuProduct.price;
+      thisCartProduct.amount = menuProduct.amount;
+      thisCartProduct.getElements(element);
+      console.log('CartProduct ', thisCartProduct);
+    }
+
+    getElements(element){
+      const thisCartProduct = this;
+
+      thisCartProduct.dom = {};
+      thisCartProduct.dom.wrapper = element;
+      thisCartProduct.amountWidget = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.amountWidget);
+      thisCartProduct.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
+      thisCartProduct.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
+      thisCartProduct.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
     }
   }
 
