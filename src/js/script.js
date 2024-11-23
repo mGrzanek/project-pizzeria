@@ -343,6 +343,7 @@ const select = {
       thisCart.dom.subtotalPrice = thisCart.dom.wrapper.querySelector(select.cart.subtotalPrice);
       thisCart.dom.deliveryFee = thisCart.dom.wrapper.querySelector(select.cart.deliveryFee);
       thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelectorAll(select.cart.totalPrice);
+      thisCart.dom.form = thisCart.dom.wrapper.querySelector(select.cart.form);
     }
 
     initActions(){
@@ -361,6 +362,11 @@ const select = {
         const productToRemove = event.detail.cartProduct;
         thisCart.remove(productToRemove);
       });
+
+      thisCart.dom.form.addEventListener('submit', function(event){
+        event.preventDefault();
+        thisCart.sendOrder();
+      })
     }
 
     add(menuProduct){
@@ -416,6 +422,7 @@ const select = {
       console.log('products: ', thisCart.products);
       thisCart.update();
     }
+    
   }
 
   class CartProduct {
