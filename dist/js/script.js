@@ -458,6 +458,12 @@ const select = {
           return response.json();
         }).then(function(parsedResponse){
           console.log('parsedResponse', parsedResponse);
+          thisCart.products = [];
+          thisCart.dom.productList.innerHTML = '';
+          thisCart.dom.address.value = '';
+          thisCart.dom.phone.value = '';
+          thisCart.update();
+          thisCart.dom.wrapper.classList.remove(classNames.cart.wrapperActive);
         }); 
     }
   }
