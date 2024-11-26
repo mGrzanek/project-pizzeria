@@ -43,6 +43,7 @@ const select = {
       formSubmit: '.cart__order [type="submit"]',
       phone: '[name="phone"]',
       address: '[name="address"]',
+      formInput: 'cart__order-confirmation input',
     },
     cartProduct: {
       amountWidget: '.widget-amount',
@@ -369,7 +370,7 @@ const select = {
       thisCart.dom.form.addEventListener('submit', function(event){
         event.preventDefault();
         thisCart.sendOrder();
-      })
+      });
     }
 
     add(menuProduct){
@@ -426,6 +427,7 @@ const select = {
       thisCart.update();
     }
 
+
     sendOrder(){
       const thisCart = this;
   
@@ -452,19 +454,32 @@ const select = {
         body: JSON.stringify(payload)
       };
 
-      
-      fetch(url, options)
-        .then(function(response){
-          return response.json();
-        }).then(function(parsedResponse){
-          console.log('parsedResponse', parsedResponse);
-          thisCart.products = [];
-          thisCart.dom.productList.innerHTML = '';
-          thisCart.dom.address.value = '';
-          thisCart.dom.phone.value = '';
-          thisCart.update();
-          thisCart.dom.wrapper.classList.remove(classNames.cart.wrapperActive);
-        }); 
+      if(payload.products.length > 0){
+        if(payload.phone && !isNaN(payload.phone)){
+          thisCart.phone.classList.add(classNames.cart.success);
+          if( payload.address && payload.address.length > 3){
+            thisCart.address.classList.add(classNames.cart.success);
+            fetch(url, options)
+              .then(function(response){
+                return response.json();
+              }).then(function(parsedResponse){
+              console.log('parsedResponse', parsedResponse);
+              thisCart.products = [];
+              thisCart.dom.productList.innerHTML = '';
+              thisCart.dom.address.value = '';
+              thisCart.dom.phone.value = '';
+              thisCart.update();
+              thisCart.dom.wrapper.classList.remove(classNames.cart.wrapperActive);
+            }); 
+          } else {
+            alert("Incorrect address!");
+          }
+        } else {
+          alert("Incorrect phone number!");
+        }
+      } else {
+        alert("Empty order! Add product to cart.")
+      }
     }
   }
 
