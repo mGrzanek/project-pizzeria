@@ -253,6 +253,7 @@ const select = {
       const thisProduct = this;
 
       app.cart.add(thisProduct.prepareCartProduct());
+      thisProduct.element.classList.remove(classNames.menuProduct.wrapperActive);
     }
   }
 
@@ -457,7 +458,7 @@ const select = {
           return response.json();
         }).then(function(parsedResponse){
           console.log('parsedResponse', parsedResponse);
-        });
+        }); 
     }
   }
 
