@@ -456,9 +456,7 @@ const select = {
 
       if(payload.products.length > 0){
         if(payload.phone && !isNaN(payload.phone)){
-          thisCart.phone.classList.add(classNames.cart.success);
           if( payload.address && payload.address.length > 3){
-            thisCart.address.classList.add(classNames.cart.success);
             fetch(url, options)
               .then(function(response){
                 return response.json();
