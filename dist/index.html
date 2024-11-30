@@ -44,8 +44,8 @@
                 </li>
               </ul>
               <div class="cart__order-confirmation">
-                <input type="tel" name="phone" placeholder="Your phone">
-                <input type="text" name="address" placeholder="Your address">
+                <input type="tel" name="phone" placeholder="Your phone" pattern="[0-9]{>3}" title="Only numbers." required>
+                <input type="text" name="address" placeholder="Your address" pattern="[A-Za-z0-9]{>3}" title="The field must have at least 3 characters" required>
                 <button type="submit" class="btn-secondary">Order</button>
               </div>
             </form>

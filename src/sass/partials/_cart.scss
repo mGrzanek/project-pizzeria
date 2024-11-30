@@ -152,16 +152,18 @@
     input, button {
       width: 100%;
       margin-bottom: ($base-size / 2);
-
-      &.success {
-        border-color: $color-success;
-      }
-
-      &.error {
-        border-color: $color-main;
-      }
     }
 
-  }
+    //input {
+        // &.success {
+        //   border: 2 px solid $color-success;
+        // }
+  
+        // &.error {
+        //   border-color: 2px solid $color-main;
+        // }
+     // }
+    }
 
+  //}
 }
