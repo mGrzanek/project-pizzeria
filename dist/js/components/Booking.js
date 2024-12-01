@@ -1,28 +1,39 @@
-import { templates } from "./../settings.js";
+import { select, templates } from "./../settings.js";
+import AmountWidget from "./AmountWidget.js";
 
 class Booking {
     constructor(element){
         const thisBooking = this;
 
-        thisBooking.getElements(element);
-        thisBooking.render();
-        //thisBooking.initWidgets();
-        console.log('booking!');
+        thisBooking.render(element);
+        thisBooking.initWidgets();
     }
 
-    getElements(element){
-        const thisBooking = this;
-
-        thisBooking.dom = {};
-        thisBooking.dom.wrapper = element;
-    }
-    render(){
+    render(element){
         const thisBooking = this;
 
         const generatedHTML = templates.bookingWidget();
+        thisBooking.dom = {};
+        thisBooking.dom.wrapper = element;
         thisBooking.dom.wrapper.innerHTML = generatedHTML;
+        thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
+        thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
+    } 
+
+    initWidgets(){
+        const thisBooking = this;
+
+        thisBooking.peopleAmountWidget = new AmountWidget(thisBooking.dom.peopleAmount);
+        thisBooking.hoursAmountWidget = new AmountWidget(thisBooking.dom.hoursAmount);
+
+        thisBooking.dom.peopleAmount.addEventListener('updated', function(){
+            console.log('people widget updated!');
+        });
+
+        thisBooking.dom.hoursAmount.addEventListener('updated', function(){
+            console.log('hours widget updated!');
+        });
     }
-    
 }
 
 export default Booking;

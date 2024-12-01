@@ -10,6 +10,14 @@ export const select = {
       pages: '#pages',
       booking: '.booking-wrapper',
     },
+    booking: {
+      peopleAmount: '.people-amount',
+      hoursAmount: '.hours-amount',
+      tables: '.floor-plan .table',
+    },
+    nav: {
+        links: '.main-nav a',
+    },
     all: {
       menuProducts: '#product-list > .product',
       menuProductsActive: '#product-list > .product.active',
@@ -38,14 +46,6 @@ export const select = {
               output: '.output',
           },
         },
-    },
-    booking: {
-      peopleAmount: '.people-amount',
-      hoursAmount: '.hours-amount',
-      tables: '.floor-plan .table',
-    },
-    nav: {
-        links: '.main-nav a',
     },
     cart: {
         productList: '.cart__order-summary',
