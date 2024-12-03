@@ -77,6 +77,7 @@ export const classNames = {
     wrapperActive: 'active',
     success: 'success',
     error: 'error',
+    glow: 'glow',
   },
   booking: {
     loading: 'loading',

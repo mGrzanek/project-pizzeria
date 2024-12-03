@@ -39,6 +39,7 @@ class Product {
       thisProduct.dom.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.dom.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
       thisProduct.dom.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
+      thisProduct.dom.cart = document.querySelector(select.cart.toggleTrigger);
     }
   
     initAccordion() {
@@ -170,7 +171,12 @@ class Product {
       const thisProduct = this;
   
       //app.cart.add(thisProduct.prepareCartProduct());
+      thisProduct.dom.cart.classList.add(classNames.cart.glow);
 
+      setTimeout(() => {
+        thisProduct.dom.cart.classList.remove(classNames.cart.glow);
+      }, "1000");
+      
       const event = new CustomEvent('add-to-cart', {
         bubbles: true,
         detail: {

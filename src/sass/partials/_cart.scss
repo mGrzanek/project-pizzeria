@@ -16,13 +16,16 @@
       @include accordion-open();
       padding: ($base-size * 1.5) 0 0 0;
     }
-
   }
 
   &__summary {
     @include flex(row, center, space-between);
     text-transform: uppercase;
     cursor: pointer;
+
+    &.glow {
+      animation: glow 1s ease;
+    }
   }
 
   &__icon {

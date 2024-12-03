@@ -112,3 +112,17 @@ $base-size: 12px;
     transform: rotateX(0deg);
   }
 }
+
+@keyframes glow {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.4;
+    }
+
+    100% {
+      opacity: 1;
+    }
+}
