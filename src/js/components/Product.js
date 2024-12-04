@@ -1,4 +1,4 @@
-import { templates, select, classNames } from './../settings.js';
+import { templates, select, classNames, settings } from './../settings.js';
 import utils from './../utils.js';
 import AmountWidget from './AmountWidget.js';
 
@@ -122,7 +122,7 @@ class Product {
         }
       }
       thisProduct.singlePrice = price;
-      thisProduct.price = price * thisProduct.amountWidget.dom.input.value;
+      thisProduct.price = price * thisProduct.amountWidget.value;
       // update calculated price in the HTML
       thisProduct.dom.priceElem.innerHTML = thisProduct.price;
     }
@@ -186,6 +186,8 @@ class Product {
       );
       thisProduct.element.dispatchEvent(event);
 
+      thisProduct.amountWidget.value = settings.amountWidget.defaultValue;
+      thisProduct.price = thisProduct.singlePrice * thisProduct.amountWidget.value;
       thisProduct.element.classList.remove(classNames.menuProduct.wrapperActive);
     }
   }
