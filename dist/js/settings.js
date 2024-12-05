@@ -15,6 +15,9 @@ export const select = {
       hoursAmount: '.hours-amount',
       tables: '.floor-plan .table',
       tablesWrapper: '.floor-plan',
+      form: '.booking-form',
+      phone: '[name="phone"]',
+      address: '[name="address"]',
     },
     nav: {
         links: '.main-nav a',
@@ -47,6 +50,9 @@ export const select = {
             input: 'input[type="range"]',
             output: '.output',
         },
+        starters: {
+          input: 'input[name="starter"]',
+        }
     },
     cart: {
         productList: '.cart__order-summary',
