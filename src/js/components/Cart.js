@@ -1,6 +1,7 @@
 import { select, settings, templates, classNames } from './../settings.js';
 import utils from './../utils.js';
 import CartProduct from './CartProduct.js';
+import Validator from './Validator.js';
 
 class Cart {
     constructor(element){
@@ -8,6 +9,7 @@ class Cart {
   
       thisCart.products = [];
       thisCart.getElements(element);
+      thisCart.initValidation();
       thisCart.initActions();
     }
   
@@ -50,12 +52,19 @@ class Cart {
       });
 
       thisCart.dom.address.addEventListener('input', function(){
-        thisCart.addressValidate();
+        thisCart.addressValidator.addressToggleClassValidate(thisCart.dom.address.value);
       });
 
       thisCart.dom.phone.addEventListener('input', function(){
-        thisCart.phoneValidate();
+        thisCart.phoneValidator.phoneToggleClassValidate(thisCart.dom.phone.value);
       })
+    }
+
+    initValidation(){
+      const thisCart = this;
+
+      thisCart.phoneValidator = new Validator(thisCart.dom.phone);
+      thisCart.addressValidator = new Validator(thisCart.dom.address);
     }
   
     add(menuProduct){
@@ -111,37 +120,6 @@ class Cart {
       console.log('products: ', thisCart.products);
       thisCart.update();
     }
-  
-    addressValidate(){
-      const thisCart = this;
-
-      const address = thisCart.dom.address.value;
-
-      thisCart.dom.address.classList.toggle(
-        classNames.cart.success, 
-        address && address.length > 3
-      );
-
-      thisCart.dom.address.classList.toggle(
-        classNames.cart.error,
-        !address || address.length <= 3
-      );
-    }
-
-    phoneValidate(){
-      const thisCart = this;
-      const phone = thisCart.dom.phone.value;
-
-      thisCart.dom.phone.classList.toggle(
-        classNames.cart.success,
-        phone && !isNaN(phone) && phone.length >=9 && phone.length < 12
-      );
-
-      thisCart.dom.phone.classList.toggle(
-        classNames.cart.error,
-        !phone || isNaN(phone) || phone.length < 9 || phone.length > 11
-      );
-    }
 
     sendOrder(){
       const thisCart = this;
@@ -170,8 +148,8 @@ class Cart {
       };
   
       if(payload.products.length > 0){
-        if(payload.phone && !isNaN(payload.phone) && payload.phone.length >=9 && payload.phone.length < 12){
-          if( payload.address && payload.address.length > 3){
+        if(thisCart.phoneValidator.valuePhoneValidate(payload.phone)){
+          if(thisCart.addressValidator.valueAddressValidate(payload.address)){
             fetch(url, options)
               .then(function(response){
                 return response.json();
@@ -184,11 +162,7 @@ class Cart {
               thisCart.update();
               thisCart.dom.wrapper.classList.remove(classNames.cart.wrapperActive);
             }); 
-          } else {
-            alert("Incorrect address!");
           }
-        } else {
-          alert("Incorrect phone number!");
         }
       } else {
         alert("Empty order! Add product to cart.")

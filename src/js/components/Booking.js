@@ -2,6 +2,7 @@ import { classNames, select, settings, templates } from "./../settings.js";
 import AmountWidget from "./AmountWidget.js";
 import DatePicker from "./DatePicker.js";
 import HourPicker from "./HourPicker.js";
+import Validator from "./Validator.js";
 import utils from "./../utils.js";
 
 class Booking {
@@ -9,6 +10,7 @@ class Booking {
         const thisBooking = this;
 
         thisBooking.render(element);
+        thisBooking.initValidation();
         thisBooking.initWidgets();
         thisBooking.getData();
         thisBooking.selectedTable = null;
@@ -179,7 +181,22 @@ class Booking {
         thisBooking.dom.form.addEventListener('submit', function(event){
             event.preventDefault();
             thisBooking.sendBooking();
-        })
+        });
+
+        thisBooking.dom.phone.addEventListener('input', function(){
+            thisBooking.phoneValidator.phoneToggleClassValidate(thisBooking.dom.phone.value);
+        });
+
+        thisBooking.dom.address.addEventListener('input', function(){
+            thisBooking.addressValidator.addressToggleClassValidate(thisBooking.dom.address.value);
+        });
+    }
+
+    initValidation(){
+        const thisBooking = this;
+
+        thisBooking.phoneValidator = new Validator(thisBooking.dom.phone);
+        thisBooking.addressValidator = new Validator(thisBooking.dom.address);
     }
 
     initTables(event){
@@ -244,22 +261,35 @@ class Booking {
             body: JSON.stringify(payload)
         };
 
-        fetch(url, options)
-            .then(function(response){
-                return response.json();
-            }).then(function(parsedResponse){
-                console.log(parsedResponse);
-                thisBooking.makeBooked(
-                    parsedResponse.date, 
-                    parsedResponse.hour, 
-                    parsedResponse.duration, 
-                    parsedResponse.table
-                );
-                thisBooking.updateDOM();
-                thisBooking.removeSelected();
-            }).catch((error) =>{
-                console.warn('Something went wrong...', error);
-            });
+        if(payload.table){
+            if(thisBooking.phoneValidator.valuePhoneValidate(payload.phone)){
+                if(thisBooking.addressValidator.valueAddressValidate(payload.address)){
+                    fetch(url, options)
+                        .then(function(response){
+                            return response.json();
+                        }).then(function(parsedResponse){
+                            console.log(parsedResponse);
+                            thisBooking.makeBooked(
+                                parsedResponse.date, 
+                                parsedResponse.hour, 
+                                parsedResponse.duration, 
+                                parsedResponse.table
+                            );
+                            thisBooking.updateDOM();
+                            thisBooking.removeSelected();
+                            thisBooking.dom.phone.value = '';
+                            thisBooking.dom.address.value = '';
+                            thisBooking.dom.address.classList.remove(classNames.cart.success);
+                            thisBooking.dom.phone.classList.remove(classNames.cart.success);
+                        }).catch((error) =>{
+                        console.warn('Something went wrong...', error);
+                        });
+                }
+            }
+        } else {
+            alert('Table is not selected!');
+        }
+        
     }
 }
 
