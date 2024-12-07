@@ -88,8 +88,20 @@ const app = {
   initHome: function(){
     const thisApp = this;
 
+    thisApp.homeLinks = document.querySelectorAll(select.home.homeLinks);
     const homeWrapper = document.querySelector(select.containerOf.home);
+    
     thisApp.home = new Home(homeWrapper);
+
+    for(let link of thisApp.homeLinks){
+      link.addEventListener('click', function(event){
+        const clickedElement = this;
+        event.preventDefault();
+        const id = clickedElement.getAttribute('href').replace('#', '');
+        thisApp.activatePage(id);
+        window.location.hash = `#/${id}`;
+      });
+    } 
   },
   initBooking: function(){
     const thisApp = this;
