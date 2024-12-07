@@ -77,6 +77,7 @@ export const select = {
     },
     home: {
       homeLinks: '.small a',
+      carouselWrapper: '.main-carousel',
     }
 };
   
