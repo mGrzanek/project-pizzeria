@@ -78,6 +78,7 @@ export const select = {
     home: {
       homeLinks: '.small a',
       carouselWrapper: '.main-carousel',
+      galleryContainer: '.photo-container',
     }
 };
   
@@ -97,6 +98,11 @@ export const classNames = {
     tableBooked: 'booked',
     selectedTable: 'selected',
     table: 'table',
+  },
+  home: {
+    favorite: 'favorite',
+    heartIcon: 'fa-heart',
+    shareIcon: 'fa-share-alt',
   },
   nav: {
       active: 'active',

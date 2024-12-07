@@ -136,10 +136,6 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                }
-                
-                &:hover .layer {
-                    opacity: 1;
 
                     i {
                         color: $color-light;
@@ -152,9 +148,21 @@
                             cursor: pointer;  
                         }
                     }
+
+                    &.favorite {
+                        opacity: 1;
+
+                        .fa-heart {
+                            color: $color-danger;
+                            font-size: ($base-size * 3);
+                        }
+                    }
+                }
+                
+                &:hover .layer {
+                    opacity: 1;  
                 }
             }
-
         }
         a {
             color: $color-main;
