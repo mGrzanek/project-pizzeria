@@ -53,7 +53,10 @@
                 }
 
                 &:hover {
-                    cursor: pointer;
+                    
+                    h2{
+                        cursor: pointer;
+                    }
 
                     h2, p{
                         transform: translateY(-20px);

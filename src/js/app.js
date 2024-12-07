@@ -88,12 +88,11 @@ const app = {
   initHome: function(){
     const thisApp = this;
 
-    thisApp.homeLinks = document.querySelectorAll(select.home.homeLinks);
-    const homeWrapper = document.querySelector(select.containerOf.home);
-    
-    thisApp.home = new Home(homeWrapper);
-
-    for(let link of thisApp.homeLinks){
+    thisApp.homeWrapper = document.querySelector(select.containerOf.home); 
+    thisApp.home = new Home(thisApp.homeWrapper);
+    thisApp.home.homeLinks = document.querySelectorAll(select.home.homeLinks);
+    console.log('homeLinks', thisApp.home.homeLinks);
+    for(let link of thisApp.home.homeLinks){
       link.addEventListener('click', function(event){
         const clickedElement = this;
         event.preventDefault();

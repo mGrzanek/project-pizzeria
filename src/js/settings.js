@@ -76,7 +76,7 @@ export const select = {
         remove: '[href="#remove"]',
     },
     home: {
-      homeinks: '.small a',
+      homeLinks: '.small a',
     }
 };
   
