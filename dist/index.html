@@ -74,6 +74,18 @@
     </section>
   </div>
   <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+ <script id="template-quotes" type="text/x-handlebars-template">
+    <div class="carousel-cell">
+      <div class="picture">
+        <img src={{ image }}>
+      </div>
+      <div class="description-wrapper">
+        <h2>{{ title }}</h2>
+        <p>{{ description }}</p>
+        <p class="author"> - {{ author }}</p>
+      </div>
+    </div>
+ </script>
   <script id="template-home-widget" type="text/x-handlebars-template">
     <div class="home-widget">
       <section class="box-section">
@@ -95,38 +107,7 @@
         </div>
       </section>
       <section class="quotes">
-        <div class="main-carousel">
-          <div class="carousel-cell">
-            <div class="picture">
-              <img src="./images/home/pizza-3.jpg">
-            </div>
-            <div class="description-wrapper">
-              <h2>Amazing service!</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus non nibh a maximus. Curabitur massa nisl, consectetur vel leo et, finibus vehicula metus.</p>
-              <p class="author"> - Margaret Osborne</p>
-            </div>
-          </div>
-          <div class="carousel-cell">
-            <div class="picture">
-              <img src="./images/home/pizza-3.jpg">
-            </div>
-            <div class="description-wrapper">
-              <h2>Delicious food!</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus non nibh a maximus. Curabitur massa nisl, consectetur vel leo et, finibus vehicula metus. Pellentesque vulputate est in orci hendrerit.</p>
-              <p class="author"> - Emilly Smith</p>
-            </div>
-          </div>
-          <div class="carousel-cell">
-            <div class="picture">
-              <img src="./images/home/pizza-3.jpg">
-            </div>
-            <div class="description-wrapper">
-              <h2>Great venue</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at dui nec neque tristique tincidunt. Curabitur a interdum ante.</p>
-              <p class="author"> - John Doe</p>
-            </div>
-          </div>
-        </div>
+        <div class="main-carousel"></div>
       </section>
       <section class="gallery">
         <div class="photo-container">

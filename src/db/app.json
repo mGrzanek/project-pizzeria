@@ -274,5 +274,60 @@
          "ppl": 3,
          "starters": []
       }
+   ],
+   "quotes": [
+      {
+         "id": 1,
+         "image": "./images/home/pizza-3.jpg",
+         "title": "Amazing service!",
+         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus non nibh a maximus. Curabitur massa nisl, consectetur vel leo et, finibus vehicula metus.",
+         "author": "Margaret Osborne"
+      },
+      {
+         "id": 2,
+         "image": "./images/home/pizza-3.jpg",
+         "title": "Delicious food",
+         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut dapibus non nibh a maximus. Curabitur massa nisl, consectetur vel leo et, finibus vehicula metus. Pellentesque vulputate est in orci hendrerit.",
+         "author": "Emilly Smith"
+      },
+      {
+         "id": 3,
+         "image": "./images/home/pizza-3.jpg",
+         "title": "Great venue",
+         "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at dui nec neque tristique tincidunt. Curabitur a interdum ante.",
+         "author": "John Doe"
+      }
+   ],
+   "gallery": [
+      {
+         "id": 1,
+         "image": "./images/home/pizza-4.jpg",
+         "dataId": 1
+      },
+      {
+         "id": 2,
+         "image": "./images/home/pizza-5.jpg",
+         "dataId": 2
+      },
+      {
+         "id": 3,
+         "image": "./images/home/pizza-6.jpg",
+         "dataId": 3
+      },
+      {
+         "id": 4,
+         "image": "./images/home/pizza-7.jpg",
+         "dataId": 4
+      },
+      {
+         "id": 5,
+         "image": "./images/home/pizza-8.jpg",
+         "dataId": 5
+      },
+      {
+         "id": 6,
+         "image": "./images/home/pizza-9.jpg",
+         "dataId": 6
+      }
    ]
  }

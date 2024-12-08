@@ -1,5 +1,4 @@
 import { templates, select, classNames } from "./../settings.js";
-import Carousel from "./Carousel.js";
 
 class Home {
     constructor(element){
@@ -9,7 +8,6 @@ class Home {
 
         thisHome.render(element);
         thisHome.getElements();
-        thisHome.initCarousel();
         thisHome.initActions();
     }
 
@@ -29,12 +27,7 @@ class Home {
         thisHome.dom.gallery = thisHome.dom.wrapper.querySelector(select.home.galleryContainer);
     }
 
-    initCarousel(){
-        const thisHome = this;
-
-        thisHome.carousel = new Carousel(thisHome.dom.carousel);
-    }
-
+    
     initActions(){
         const thisHome = this;
 

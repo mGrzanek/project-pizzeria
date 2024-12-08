@@ -2,7 +2,9 @@ import {settings, select, classNames} from './settings.js';
 import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Home from './components/Home.js';
+import Quotes from './components/Quotes.js';
 import Booking from './components/Booking.js';
+import Carousel from './components/Carousel.js';
 
 const app = {
   initPages: function(){
@@ -69,15 +71,16 @@ const app = {
         console.log('parsedResponse', parsedResponse);
         /* save parsedResponse as thisApp.data.products */
         thisApp.data.products = parsedResponse;
-      /* execute initMenu method  */
-      thisApp.initMenu();
-      })
-      console.log('thisApp.data', JSON.stringify(thisApp.data));
+        /* execute initMenu method  */
+        thisApp.initMenu();
+      });
   },
   initCart: function(){
     const thisApp = this;
 
+    
     const cartElem = document.querySelector(select.containerOf.cart);
+
     thisApp.cart = new Cart(cartElem);
 
     thisApp.productList = document.querySelector(select.containerOf.menu);
@@ -85,13 +88,28 @@ const app = {
       app.cart.add(event.detail.product);
     })
   },
+  initCarousel(){
+    const thisApp = this;
+
+    thisApp.carousel = thisApp.homeWrapper.querySelector(select.home.carouselWrapper);
+
+    thisApp.carousel = new Carousel(thisApp.carousel);
+  },
+  initQuotes: function(){
+    const thisApp = this;
+
+    for(let quoteData in thisApp.data.quotes){
+      thisApp.quotes = new Quotes( thisApp.data.quotes[quoteData]);
+    }
+  },
   initHome: function(){
     const thisApp = this;
 
+    const urlQuotes = settings.db.url + '/' + settings.db.quotes;
     thisApp.homeWrapper = document.querySelector(select.containerOf.home); 
     thisApp.home = new Home(thisApp.homeWrapper);
     thisApp.home.homeLinks = document.querySelectorAll(select.home.homeLinks);
-    console.log('homeLinks', thisApp.home.homeLinks);
+
     for(let link of thisApp.home.homeLinks){
       link.addEventListener('click', function(event){
         const clickedElement = this;
@@ -101,6 +119,17 @@ const app = {
         window.location.hash = `#/${id}`;
       });
     } 
+
+    fetch(urlQuotes)
+      .then(function(rawResponse){
+        return rawResponse.json();
+      })
+      .then(function(parsedResponse){
+        console.log('parsedResponse', parsedResponse);
+        thisApp.data.quotes = parsedResponse;
+        thisApp.initQuotes();
+        thisApp.initCarousel();
+      });
   },
   initBooking: function(){
     const thisApp = this;

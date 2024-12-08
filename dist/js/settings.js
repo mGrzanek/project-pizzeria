@@ -4,6 +4,8 @@ export const select = {
       cartProduct: '#template-cart-product',
       bookingWidget: '#template-booking-widget',
       homeWidget: "#template-home-widget",
+      quotes: "#template-quotes",
+      gallery: "#template-gallery",
     },
     containerOf: {
       menu: '#product-list',
@@ -129,6 +131,7 @@ export const settings = {
     orders: 'orders',
     bookings: 'bookings',
     events: 'events',
+    quotes: 'quotes',
     dateStartParamKey: 'date_gte',
     dateEndParamKey: 'date_lte',
     notRepeatParam: 'repeat=false',
@@ -150,5 +153,6 @@ export const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
     cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
     bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
-  homeWidget: Handlebars.compile(document.querySelector(select.templateOf.homeWidget).innerHTML),
+    homeWidget: Handlebars.compile(document.querySelector(select.templateOf.homeWidget).innerHTML),
+    quotesSection: Handlebars.compile(document.querySelector(select.templateOf.quotes).innerHTML),
   };
