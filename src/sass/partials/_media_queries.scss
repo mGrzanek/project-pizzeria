@@ -1,0 +1,216 @@
+@media (max-width: 767px) {
+    body {
+        font-size: 8px;
+    }
+
+    .container {
+        max-width: 300px;
+        padding: 0 10px;
+    }
+
+    input, select {
+        margin-bottom: 5px;
+        padding: 8px;
+    }
+
+    .checkbox {
+        margin-bottom: 4px;
+    }
+
+    .header {
+        position: static;
+    }
+
+    .logo__title {
+        font-size: 30px;
+    }
+
+    .logo__subtitle {
+        font-size: 12px;
+    }
+
+    .cart {
+        position: relative;
+        width: 250px;
+        padding: 8px 12px;
+        font-size: 10px;
+
+        .cart__total-number {
+            height: 20px;
+            width: 20px;
+            line-height: 20px;
+        }
+
+        .cart__icon {
+            font-size: 16px;
+        }
+    }
+
+    .home-wrapper {
+        margin: ($base-size * 2) auto;
+
+        .box-wrapper {
+            .box {
+                padding: 2% 0 .5% 0;
+    
+                h2 {
+                    font-size: 15px;
+                }
+            }
+            .small-box-wrapper {
+                display: block;
+            }
+    
+        }
+    }
+
+    .home-wrapper .gallery .photo-container .photo-wrapper {
+        height: 80px;
+    }
+
+    .home-wrapper .gallery .photo-container .photo-wrapper .layer.favorite .fa-heart {
+        font-size: 18px;
+    }
+
+    .main-nav a {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+
+    .h1, .page__title, .product__base-price, .product__name {
+        font-size: 16px;
+    }
+
+    .booking-wrapper {
+        margin: ($base-size * 2) auto;
+        padding: 15% 5%;
+    }
+
+    .time-picker {
+        display: block;
+
+        .hour-picker {
+            padding-top: 10px;
+
+            .output {
+                bottom: 10px;
+            }
+        } 
+    }
+
+    .home-wrapper section {
+        padding: 15% 5%;
+    }
+
+    .booking-options {
+        display: block;
+    }
+
+    .floor-plan {
+        width: 200px;
+        height: 200px;
+
+        [data-table="1"] {
+            left: 20px;
+            top: 20px;
+        }
+
+        [data-table="2"] {
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+        }
+
+        [data-table="3"] {
+            top: 100px;
+            right: 30px;
+        }
+
+        .table, .bar {
+            font-size: 10px;
+        }
+
+        .table{
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .bar {
+            width: 60px;
+            height: 40px;
+            line-height: 40px;
+            bottom: 20px;
+        }
+    }
+
+    .flatpickr-calendar {
+        width: 280px;
+
+        .flatpickr-rContainer {
+            padding: 5px;
+        }
+
+        .flatpickr-weekdays {
+            width: 95%;
+        }
+
+        .flatpickr-days {
+            width: 270px;
+        }
+    }
+
+    .product-list {
+        margin: ($base-size * 2) auto;
+      }      
+
+    .booking-option-title {
+        font-size: 12px;
+    }
+
+    .product__icon {
+        top: 2px;
+        right: -50px;
+    }
+    
+    .product__images.small {
+        height: 400px;
+    }
+
+    .product__images > img {
+        left: 70%;
+        top: 20%;
+        height: 100px;
+    }
+
+    .widget-amount {
+        display: flex;
+        align-items: center;
+
+        .product__params-title {
+            padding-right: 10px;
+            font-size: 10px;
+            margin: 0;
+        }
+
+        input {
+            width: 30px;
+            height: 30px;
+        }
+
+        i {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .btn-primary {
+        width: 90px;
+    }
+
+
+
+
+
+    
+}
