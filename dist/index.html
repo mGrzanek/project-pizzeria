@@ -86,6 +86,15 @@
       </div>
     </div>
  </script>
+ <script id="template-gallery" type="text/x-handlebars-template">
+    <div class="photo-wrapper">
+      <img src={{ image }}>
+      <div class="layer">
+        <i class="fas fa-heart" data-id="{{ dataId }}"></i>
+        <i class="fas fa-share-alt"></i>
+      </div>
+    </div>
+ </script>
   <script id="template-home-widget" type="text/x-handlebars-template">
     <div class="home-widget">
       <section class="box-section">
@@ -110,50 +119,7 @@
         <div class="main-carousel"></div>
       </section>
       <section class="gallery">
-        <div class="photo-container">
-          <div class="photo-wrapper">
-            <img src="./images/home/pizza-4.jpg">
-            <div class="layer">
-              <i class="fas fa-heart" data-id="1"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
-          </div>
-          <div class="photo-wrapper">
-            <img src="./images/home/pizza-5.jpg">
-            <div class="layer">
-              <i class="fas fa-heart" data-id="2"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
-          </div>
-          <div class="photo-wrapper">
-            <img src="./images/home/pizza-6.jpg">
-            <div class="layer">
-              <i class="fas fa-heart" data-id="3"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
-          </div>
-          <div class="photo-wrapper">
-            <img src="./images/home/pizza-7.jpg">
-            <div class="layer">
-              <i class="fas fa-heart" data-id="4"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
-          </div>
-          <div class="photo-wrapper">
-            <img src="./images/home/pizza-8.jpg">
-            <div class="layer">
-              <i class="fas fa-heart" data-id="5"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
-          </div>
-          <div class="photo-wrapper">
-            <img src="./images/home/pizza-9.jpg">
-            <div class="layer">
-              <i class="fas fa-heart" data-id="6"></i>
-              <i class="fas fa-share-alt"></i>
-            </div>
-          </div>
-        </div>
+        <div class="photo-container"></div>
         <a href="#">View more on Instagram</a>
       </section>
     </div>

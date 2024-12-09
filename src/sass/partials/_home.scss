@@ -20,7 +20,7 @@
             color: $color-light;
 
             h2 {
-                font-size: ($base-size * 2);
+                font-size: ($base-size * 1.7);
             }
         }
 
@@ -116,7 +116,7 @@
 
             .photo-wrapper {
                 flex: 30%;
-                height: 200px;
+                height: 170px;
                 margin: 0.5%;
                 position: relative;
 
@@ -140,7 +140,7 @@
                     i {
                         color: $color-light;
                         padding: 8px;
-                        font-size: ($base-size * 1.5);
+                        font-size: ($base-size * 1.2);
 
                         &:hover{
                             transform: scale(1.5);
@@ -154,7 +154,7 @@
 
                         .fa-heart {
                             color: $color-danger;
-                            font-size: ($base-size * 3);
+                            font-size: ($base-size * 2.5);
                         }
                     }
                 }

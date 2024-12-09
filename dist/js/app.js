@@ -3,6 +3,7 @@ import Product from './components/Product.js';
 import Cart from './components/Cart.js';
 import Home from './components/Home.js';
 import Quotes from './components/Quotes.js';
+import Gallery from './components/Gallery.js';
 import Booking from './components/Booking.js';
 import Carousel from './components/Carousel.js';
 
@@ -102,10 +103,18 @@ const app = {
       thisApp.quotes = new Quotes( thisApp.data.quotes[quoteData]);
     }
   },
+  initGallery: function(){
+    const thisApp = this;
+
+    for(let galleryData in thisApp.data.gallery){
+      thisApp.gallery = new Gallery(thisApp.data.gallery[galleryData]);
+    }
+  },
   initHome: function(){
     const thisApp = this;
 
     const urlQuotes = settings.db.url + '/' + settings.db.quotes;
+    const urlGallery = settings.db.url + '/' + settings.db.gallery;
     thisApp.homeWrapper = document.querySelector(select.containerOf.home); 
     thisApp.home = new Home(thisApp.homeWrapper);
     thisApp.home.homeLinks = document.querySelectorAll(select.home.homeLinks);
@@ -130,6 +139,16 @@ const app = {
         thisApp.initQuotes();
         thisApp.initCarousel();
       });
+
+    fetch(urlGallery)
+      .then(function(rawResponse){
+        return rawResponse.json();
+      })
+      .then(function(parsedResponse){
+        console.log(parsedResponse);
+        thisApp.data.gallery = parsedResponse;
+        thisApp.initGallery();
+      })
   },
   initBooking: function(){
     const thisApp = this;

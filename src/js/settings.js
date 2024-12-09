@@ -132,6 +132,7 @@ export const settings = {
     bookings: 'bookings',
     events: 'events',
     quotes: 'quotes',
+    gallery: 'gallery',
     dateStartParamKey: 'date_gte',
     dateEndParamKey: 'date_lte',
     notRepeatParam: 'repeat=false',
@@ -155,4 +156,5 @@ export const templates = {
     bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
     homeWidget: Handlebars.compile(document.querySelector(select.templateOf.homeWidget).innerHTML),
     quotesSection: Handlebars.compile(document.querySelector(select.templateOf.quotes).innerHTML),
+    gallerySection: Handlebars.compile(document.querySelector(select.templateOf.gallery).innerHTML),
   };

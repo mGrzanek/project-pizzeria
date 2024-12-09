@@ -65,11 +65,16 @@
     }
 
     .home-wrapper .gallery .photo-container .photo-wrapper {
-        height: 80px;
+        height: 70px;
+    }
+
+    .home-wrapper .gallery .photo-container .photo-wrapper .layer i {
+        font-size: ($base-size * .9);
     }
 
     .home-wrapper .gallery .photo-container .photo-wrapper .layer.favorite .fa-heart {
         font-size: 18px;
+        font-size: ($base-size * 1.2);
     }
 
     .main-nav a {
