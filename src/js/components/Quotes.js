@@ -5,7 +5,6 @@ class Quotes {
     constructor(data){
         const thisQuotes = this;
 
-        console.log(thisQuotes);
         thisQuotes.data = data;
         thisQuotes.render();
     }

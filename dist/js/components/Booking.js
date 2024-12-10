@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { classNames, select, settings, templates } from "./../settings.js";
 import AmountWidget from "./AmountWidget.js";
 import DatePicker from "./DatePicker.js";
@@ -14,6 +15,8 @@ class Booking {
         thisBooking.initWidgets();
         thisBooking.getData();
         thisBooking.selectedTable = null;
+        thisBooking.bookedTablesAmount = [];
+        console.log('bookedTableAmount', thisBooking.bookedTablesAmount);
     }
 
     getData(){
@@ -140,6 +143,45 @@ class Booking {
                 table.classList.remove(classNames.booking.tableBooked);
             }
         }
+        thisBooking.setRangeSliderGrdient();
+    }
+
+    setRangeSliderGrdient() {
+        const thisBooking = this;
+    
+        thisBooking.dom.rangeSliderWrapper = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.rangeSlider);
+        
+        const hoursBooked = thisBooking.booked[thisBooking.date];
+        const gradientHours = [];
+        const openHour = settings.hours.open;
+        const closed = settings.hours.close;
+        const allHourBlocks = (closed - openHour)/0.5;
+        let hour = openHour;
+        let color = '';
+    
+        for (let i = 0; i < allHourBlocks; i++) {
+            if (hour in hoursBooked) {
+                if(hoursBooked[hour].length < 2) {
+                    color = 'green';
+                } else if(hoursBooked[hour].length == 2){
+                    color ='orange';
+                } else if( hoursBooked[hour].length > 2){
+                    color = 'red';
+                }
+            } else {
+                color = 'green';
+            }
+
+            let gradient = (i/(allHourBlocks-1)) * 100;
+
+            gradientHours.push(`${color} ${gradient}%`);
+            hour += 0.5;
+        }
+        
+        const gradientValues = gradientHours.join(', ');
+        console.log(gradientValues);
+    
+        thisBooking.dom.rangeSliderWrapper.style.background = `linear-gradient(to right, ${gradientValues})`;
     }
 
     render(element){
@@ -168,6 +210,7 @@ class Booking {
         thisBooking.hoursAmountWidget = new AmountWidget(thisBooking.dom.hoursAmount);
         thisBooking.datePicker = new DatePicker(thisBooking.dom.datePicker);
         thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
+        console.log('slider', thisBooking.dom.rangeSlider);
 
         thisBooking.dom.wrapper.addEventListener('updated', function(){
             thisBooking.updateDOM();

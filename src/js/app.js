@@ -69,7 +69,6 @@ const app = {
         return rawResponse.json();
       })
       .then(function(parsedResponse){
-        console.log('parsedResponse', parsedResponse);
         /* save parsedResponse as thisApp.data.products */
         thisApp.data.products = parsedResponse;
         /* execute initMenu method  */
@@ -134,7 +133,6 @@ const app = {
         return rawResponse.json();
       })
       .then(function(parsedResponse){
-        console.log('parsedResponse', parsedResponse);
         thisApp.data.quotes = parsedResponse;
         thisApp.initQuotes();
         thisApp.initCarousel();
@@ -145,7 +143,6 @@ const app = {
         return rawResponse.json();
       })
       .then(function(parsedResponse){
-        console.log(parsedResponse);
         thisApp.data.gallery = parsedResponse;
         thisApp.initGallery();
       })
