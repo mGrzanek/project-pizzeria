@@ -16,34 +16,38 @@ class Validator{
 
     addressToggleClassValidate(addressValue){
         const thisValidator = this;
+        const regex = /^([a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9]{3,}|[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9./-]{3,})(\s[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9\s/-]+)?$/;
   
         thisValidator.dom.wrapper.classList.toggle(
           classNames.cart.success, 
-          addressValue && addressValue.length > 3
+          addressValue && regex.test(addressValue)
         );
   
         thisValidator.dom.wrapper.classList.toggle(
           classNames.cart.error,
-          !addressValue || addressValue.length <= 3
+          !addressValue || !regex.test(addressValue)
         );
     }
 
     phoneToggleClassValidate(phoneValue){
         const thisValidator = this;
+        const regex = /^[0-9]{9,11}$/;
   
         thisValidator.dom.wrapper.classList.toggle(
           classNames.cart.success,
-          phoneValue && !isNaN(phoneValue) && phoneValue.length >=9 && phoneValue.length < 12
+          phoneValue && regex.test(phoneValue)
         );
   
         thisValidator.dom.wrapper.classList.toggle(
           classNames.cart.error,
-          !phoneValue || isNaN(phoneValue) || phoneValue.length < 9 || phoneValue.length > 11
+          !phoneValue || !regex.test(phoneValue)
         );
     }
 
     valuePhoneValidate(phone){
-        if(phone && !isNaN(phone) && phone.length >=9 && phone.length < 12){
+        const regex = /^[0-9]{9,11}$/;
+
+        if(phone && regex.test(phone)){
             return true;        
         } else {
             alert("Incorrect phone number!");
@@ -51,11 +55,13 @@ class Validator{
     }
 
     valueAddressValidate(address){
-        if( address && address.length > 3){
+        const regex = /^([a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9]{3,}|[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9./-]{3,})(\s[a-zA-ZżźćńółęąśŻŹĆĄŚĘŁÓŃ0-9\s/-]+)?$/;
+
+        if( address && regex.test(address)) {
             return true
         } else {
             alert("Incorrect address!");
-          }
+        }
     }
 }
 

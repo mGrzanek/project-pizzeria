@@ -165,7 +165,7 @@ class Booking {
                     color = 'green';
                 } else if(hoursBooked[hour].length == 2){
                     color ='orange';
-                } else if( hoursBooked[hour].length > 2){
+                } else {
                     color = 'red';
                 }
             } else {
