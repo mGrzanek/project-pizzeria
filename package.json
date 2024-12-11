@@ -1,7 +1,7 @@
 {
     "name": "fer-07-project",
     "version": "1.0.0",
-    "description": "",
+    "description": "Pizzeria restaurant website prject based on HTML, CSS and Js.",
     "main": "index.html",
     "scripts": {
         "init-project": "npm install && npm-run-all init:*",

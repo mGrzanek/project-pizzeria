@@ -1,1 +1,3 @@
-version 2.4
+It's pizzeria restaurant website project based on HTML, CSS and JS with Handlebars templates, plugins flickity, flatpickr and rangeSlider. AJAX/API technologies are used to connect with the server. The project code is automated. The project contains 3 subpages - the main one with links, a subpage for creating and sending orders, and subpage for booking a table.
+
+To run the application, install the necessary packages using npm install. Then run the program by npm run watch.
