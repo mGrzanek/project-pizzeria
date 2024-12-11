@@ -8,4 +8,4 @@ The project contains 3 pages:
  
 To run the application, install the necessary packages using npm install. Then run the program by npm run watch.
 
-https://e77ccc73-1627-47b9-bc5e-7d39aa045ee6-00-179o42t4dhl7a.worf.replit.dev/
+https://acdb647a-65a2-47b1-8988-3379bda9d8e8-00-3n9rhe8khl9bs.picard.repl.co/
