@@ -2,9 +2,9 @@ import path from 'path';
 import jsonServer from 'json-server';
 
 const server = jsonServer.create();
-const router = jsonServer.router(path.join('docs', 'db', 'app.json'));
+const router = jsonServer.router(path.join('dist', 'db', 'app.json'));
 const middlewares = jsonServer.defaults({
-  static: 'docs',
+  static: 'dist',
   noCors: true
 });
 // eslint-disable-next-line no-undef
