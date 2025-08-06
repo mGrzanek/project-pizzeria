@@ -1,11 +1,29 @@
-# ** Pizzeria app **
-It's pizzeria restaurant app based on HTML, CSS and JS with Handlebars templates, plugins flickity, flatpickr and rangeSlider. AJAX/API technologies are used to connect with the server. The project code is automated. 
+# pizzeria app
+It's responsive single-page restaurant app built with HTML, CSS, JavaScript, and Handlebars. It uses plugins such as Flickity, Flatpickr, and RangeSlider. Data is fetched dynamically with AJAX from a mock API. The project includes automated development tools and linters.
 
-The project contains 3 pages:
- - Home with links, carousel with quotes and photo gallery,
- - Order page for creating and sending orders,
- - Booking page to add table reservations
- 
-To run the application, install the necessary packages using npm install. Then run the program by npm run watch.
+Project: https://project-pizzeria-2j97.onrender.com
 
-https://acdb647a-65a2-47b1-8988-3379bda9d8e8-00-3n9rhe8khl9bs.picard.repl.co/
+## Description
+
+The project contains 3 subpages:
+ - **Home** with links, carousel with quotes and photo gallery,
+ - **Order** page for creating and sending orders,
+ - **Booking** page to add table reservations
+
+
+## Technologies Used
+
+HTML, CSS, JavaScript, Handlebars, Flickity, Flatpickr, RangeSlider, AJAX / REST API, json-server, ESLint & Stylelint
+
+
+## Work in Progress
+
+Development of backend part is currently in progress.
+
+## Configuration
+
+To run the application, install the necessary packages using commend `npm install`. 
+Then run the program by `npm run watch`.
+
+## Author
+Monika Grzanek
